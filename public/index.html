@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <!-- <link rel="stylesheet" href="./fonts/bebas-neue/bebasneue.css"> -->
+    <link rel="stylesheet" href="./fonts/bebas-neue-pro/stylesheet.css" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      /*!** reset ***/
+      * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        position: relative;
+        font: inherit;
+        font-family: 'Bebas Neue Pro';
+        color: #ccc;
+        box-sizing: border-box;
+      }
+
+      html {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        font-family: 'Bebas Neue';
+        -webkit-font-smoothing: antialiased !important;
+        font-size: 20px;
+      }
+
+      a {
+        background-color: transparent;
+      }
+      a:active,
+      a:hover {
+        outline: none;
+      }
+
+      button,
+      input {
+        outline: none;
+      }
+
+      button::-moz-focus-inner,
+      input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }
+
+      input[type='checkbox'],
+      input[type='radio'] {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0;
+      }
+
+      /* clearfix */
+      .clearfix {
+        *zoom: 1;
+      }
+      .clearfix:before,
+      .clearfix:after {
+        content: '';
+        display: table;
+        line-height: 0;
+      }
+
+      .clearfix:after {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
