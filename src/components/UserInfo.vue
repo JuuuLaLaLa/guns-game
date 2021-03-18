@@ -6,7 +6,7 @@
         <span class="user-level__current-level">{{ userLevel }}</span>
         <span class="user-level__text">LEVEL</span>
         <span class="user-level__progress">{{ userProgress + '%' }}</span>
-        <span class="user-level__next-level">2</span>
+        <span class="user-level__next-level" v-if="userLevel < 3">{{ userLevel + 1 }}</span>
       </div>
       <div class="user-level__progress-bar">
         <span v-bind:style="'width: ' + userProgress + '%'">

@@ -1,5 +1,5 @@
 <template>
-  <button class="button-start" v-on:click="startGame">Начать работу</button>
+  <button class="button-start" v-on:mousedown="startGame">Начать работу</button>
 </template>
 
 <script>

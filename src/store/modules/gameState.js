@@ -21,8 +21,13 @@ export default {
     },
     setGameProgress(state, payload) {
       state.gameProgress.splice(payload.index, 1, 1);
-
       state.gameProgressNum = payload.progressNum;
+      console.log(state.gameProgress);
+
+    },
+    zeroingGameProgress(state, progress) {
+      state.gameProgress = progress;
+      state.gameProgressNum = 0;
     },
     setCurrentDetail(state, detailNum) {
       state.currentDetail = detailNum;
@@ -35,7 +40,6 @@ export default {
     async newGame(ctx) {
       let min = Math.ceil(1);
       let max = Math.floor(9);
-      let progressNum = 0;
       let progress;
       let currentDetail;
       let newGun;
@@ -54,9 +58,10 @@ export default {
         currentDetail = 1;
         progress = [0, 0, 0, 0]
       }
+      ctx.commit('zeroingGameProgress', progress);
+      console.log(progress);
       ctx.commit('refreshDateTime');
       ctx.commit('setCurrentDetail', currentDetail);
-      ctx.commit('setGameProgress', {progress, progressNum});
       ctx.commit('resetGame', newGun);
     },
     async updateGameBonus(ctx, newBonus) {
@@ -67,6 +72,7 @@ export default {
       let progressNum = ctx.state.gameProgressNum;
       progressNum = progressNum + 100 / (userLevel + 1);
       ctx.commit('setGameProgress', {index, progressNum});
+    
     },
     async updateCurrentDetail(ctx) {
       let nextDetail = ctx.state.currentDetail + 1;
