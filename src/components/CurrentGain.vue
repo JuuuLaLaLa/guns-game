@@ -31,7 +31,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style scope lang="scss">
 .current-gain {
   width: 19.5rem;
   margin: 0 auto;

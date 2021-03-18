@@ -13,7 +13,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .info-block-gain {
   width: 17.5rem;
   height: 7.8rem;

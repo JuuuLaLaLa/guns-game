@@ -15,6 +15,9 @@ export default {
     startGame() {
       this.updateProfileVisibility(false);
       this.newGame();
+      let audio = new Audio();
+      audio.src = "/media/buttons.mp3";
+      audio.autoplay = true;
     },
   },
 };

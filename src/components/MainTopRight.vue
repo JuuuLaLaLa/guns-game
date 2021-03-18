@@ -1,7 +1,8 @@
 <template>
   <div class="main-top__right">
-    <div class="button-help" v-bind:class="timer ? 'timer' : ''">
+    <div class="button-help" v-bind:class="timer ? 'timer' : ''" v-bind:style="animationActive?'opacity: 0':''">
       <a class="button-help__icon" v-on:click.stop.prevent="showHelp"></a>
+      <div id="btn-sound"></div>
       <div class="button-help__progress">
         <span class="button-help__time">{{ currentTime }}</span>
         <svg
@@ -12,16 +13,6 @@
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <!-- <defs>
-            <filter id="dropshadow">
-              <feDropShadow
-                dx="0"
-                dy="0"
-                stdDeviation="5"
-                flood-color="#dcff00"
-              />
-            </filter>
-          </defs> -->
           <circle
             class="button-help__svg-circle"
             r="1.5rem"
@@ -31,21 +22,6 @@
             stroke-dasharray="300"
             stroke-dashoffset="0"
           ></circle>
-          <!-- <circle
-            class="button-help__shadow"
-            r="1.5rem"
-            cx="1.7rem"
-            cy="1.7rem"
-            fill="#dcffoo"
-            filter="url(#dropshadow)"
-            v-bind:stroke-dasharray="c"
-            stroke-dashoffset="0"
-            v-bind:style="
-              currentTime
-                ? 'stroke-dashoffset: ' + timeProgressBar() + 'px;'
-                : ''
-            "
-          ></circle> -->
           <circle
             id="circleProgress"
             class="button-help__svg-progress"
@@ -67,7 +43,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 export default {
   name: 'MainTopRight',
   data() {
@@ -81,11 +57,19 @@ export default {
   destroyed() {
     this.stopTimer();
   },
+  computed: {
+    ...mapState('pageState', ['animationActive']),
+  },
   methods: {
     ...mapActions('pageState', ['updateHelpVisibility']),
     showHelp() {
       this.startTimer();
       this.updateHelpVisibility(true);
+
+      let audio = new Audio();
+      audio.src = "/media/buttons.mp3";
+      audio.autoplay = true;
+      
       setTimeout(() => {
         this.stopTimer;
       }, 30000);
@@ -127,6 +111,9 @@ export default {
 <style scoped lang="scss">
 .main-top__right {
   padding: 2rem;
+  #btn-sound {
+    display: none;
+  }
 }
 .button-help {
   z-index: 2;

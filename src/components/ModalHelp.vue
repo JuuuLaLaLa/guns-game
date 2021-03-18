@@ -1,6 +1,6 @@
 <template>
   <div class="modal-help" v-bind:class="helpVisibility ? 'active' : ''">
-    <a v-on:click.stop.prevent="updateHelpVisibility(false)" class="modal-help__close"></a>
+    <a v-on:click.stop.prevent="closeModal()" class="modal-help__close"></a>
     <div class="modal-help__title">{{ this.getGunByIndex(this.currentGun).name }}</div>
     <div class="modal-help__img">
       <img v-bind:src="imgGunPath" />
@@ -42,6 +42,13 @@ export default {
   },
   methods: {
     ...mapActions('pageState', ['updateHelpVisibility']),
+    closeModal() {
+      this.updateHelpVisibility(false);
+      
+      let audio = new Audio();
+      audio.src = "/media/buttons.mp3";
+      audio.autoplay = true;
+    }
   },
 };
 </script>

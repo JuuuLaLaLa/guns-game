@@ -13,16 +13,14 @@
     >
       <ModalHelp />
     </div>
-    <div
-      class="final-animation"
-      v-bind:class="finalDetail ? 'active' : ''"
-    ></div>
+    <FinalAnimation />
   </div>
 </template>
 
 <script>
 import Main from './components/Main';
 import ModalHelp from './components/ModalHelp';
+import FinalAnimation from './components/FinalAnimation';
 import { mapState, mapActions } from 'vuex';
 export default {
   name: 'app',
@@ -43,6 +41,7 @@ export default {
   components: {
     Main,
     ModalHelp,
+    FinalAnimation,
   },
 };
 </script>
@@ -65,28 +64,13 @@ export default {
   opacity: 0;
   transition: opacity 0.2s ease;
   &.active {
-    z-index: 3;
+    z-index: 4;
     opacity: 1;
   }
   &.transparent {
     background: #0da;
     background: transparent;
-    z-index: 3;
-    opacity: 1;
-  }
-}
-.final-animation {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('assets/img/animation-bg.png');
-  z-index: -1;
-  opacity: 0;
-  &.active {
-    z-index: 3;
+    z-index: 10;
     opacity: 1;
   }
 }

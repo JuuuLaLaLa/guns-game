@@ -1,10 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    profileVisibility: true,
-    helpVisibility: false,
-    pageDisabled: false,
-    finalDetail: false,
+    profileVisibility: true, // открыто ли слева окно профиля
+    helpVisibility: false, // открыта ли подсказка
+    pageDisabled: false, // заблокированы ли все элементы страницы
+    finalDetail: false, // флаг для обозначения, является текущая деталь финальной
+    animationActive: false // запущена ли фоновая анимация
   },
   getters: {
   },
@@ -20,6 +21,9 @@ export default {
     },
     setFinalDetail(state, val) {
       state.finalDetail = val;
+    },
+    setAnimationActive(state, val) {
+      state.animationActive = val;
     }
   },
   actions: {
@@ -34,6 +38,9 @@ export default {
     },
     async updateFinalDetail(ctx, val) {
       ctx.commit('setFinalDetail', val)
+    },
+    async updateAnimationActive(ctx, val) {
+      ctx.commit('setAnimationActive', val)
     },
   }
 }

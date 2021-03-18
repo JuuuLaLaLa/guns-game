@@ -1,5 +1,5 @@
 <template>
-  <div class="info-block-detail">
+  <div class="info-block-detail" v-bind:style="animationActive?'opacity: 0':''">
     <div class="info-block-detail__title">Выберите подходящую часть:</div>
     <div class="info-block-detail__text">{{ details[currentDetail - 1].name }}</div>
   </div>
@@ -10,11 +10,12 @@ export default {
   name: 'InfoBlockDetail',
   computed: {
     ...mapState('gunsData', ['details']),
-    ...mapState('gameState', ['currentDetail']),
+    ...mapState('gameState', ['currentDetail']),    
+    ...mapState('pageState', ['animationActive']),
   }
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .info-block-detail {
   width: 17.5rem;
   height: 7.8rem;

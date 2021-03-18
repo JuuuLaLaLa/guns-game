@@ -1,6 +1,6 @@
 <template>
   <div class="main__bottom">
-    <div class="game-details">
+    <div class="game-details" v-bind:style="animationActive?'opacity: 0':''">
       <GameDetail
         v-for="gunNum of getRandomGuns(currentGun)"
         v-bind:key="gunNum"
@@ -17,6 +17,7 @@ import GameDetail from './GameDetail';
 export default {
   name: 'MainBottom',
   computed: {
+    ...mapState('pageState', ['animationActive']),
     ...mapState('gameState', ['currentGun', 'currentDetail']),
     ...mapGetters('gunsData', ['getRandomGuns']),
   },
@@ -32,5 +33,6 @@ export default {
   flex-wrap: nowrap;
   justify-content: center;
   padding-bottom: 3.1rem;
+  transition: opacity .2s ease;
 }
 </style>

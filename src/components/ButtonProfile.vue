@@ -9,16 +9,19 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions } from "vuex";
 export default {
-  name: 'ButtonProfile',
+  name: "ButtonProfile",
   computed: {
-    ...mapState('pageState', ['profileVisibility']),
+    ...mapState("pageState", ["profileVisibility"]),
   },
   methods: {
-    ...mapActions('pageState', ['updateProfileVisibility']),
+    ...mapActions("pageState", ["updateProfileVisibility"]),
     showProfile() {
       this.updateProfileVisibility(true);
+      let audio = new Audio();
+      audio.src = "/media/buttons.mp3";
+      audio.autoplay = true;
     },
   },
 };
@@ -29,7 +32,7 @@ export default {
   z-index: 2;
   width: 4.8rem;
   height: 4.8rem;
-  background: url('../assets/img/btn-ellipse.png');
+  background: url("../assets/img/btn-ellipse.png");
   background-size: contain;
   padding: 0.7rem;
   float: left;
@@ -40,7 +43,7 @@ export default {
     height: 3.4rem;
     border-radius: 3.4rem;
     background-color: #08090b;
-    background-image: url('../assets/img/profile-icon.png');
+    background-image: url("../assets/img/profile-icon.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 1.3rem 1.3rem;

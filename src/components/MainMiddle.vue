@@ -45,9 +45,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  // z-index: 5;
   .gun {
     display: block;
     margin: 7rem auto 0;
+    z-index: 3;
     &_1 {
       width: 41rem;
     }
